@@ -1,0 +1,20 @@
+Pour commencer il faut voir un serveur WEB avec des modules PHP et une base de donnée.(Voir tuto sur serveur WEB)
+Dans cet exemple nous allons utiliser Apache avec une base de donnée mariadb.
+
+Maintenant il va falloir créer une base de donnée, pour ceci on se connecte d'abord à mysql :
+mysql -u root -p
+
+On crée une bdd : create database glpi;
+On crée un utilisateur pour cette bdd : create user 'glpi'@locahost' identified by 'glpi';
+Il faut donner les privilèges à cet utilisateur : grant all privileges on glpi.* to 'glpi'@'localhost' with grant option;
+On rafraichit les configuration de privilèges : flush privileges
+
+Après avoir installé ceci nous pouvons installer GLPI, si vous êtes sur une machine sans GUI, vous pouvez utiliser la commande wget avec le lien de téléchargement que vous aurez au préalable chercher sur une autre machine avec interface.
+Ensuite il faut décompressé le fichier tgz : tar -xvf (nom.du.fichier)
+Après il faut déplacer le fichier décompressé dans /var/www/html/glpi
+Il faut modifier les droits et le propriétaire au dossier glpi :
+chmod -R 755 /var/www/html/glpi
+chown -R www-data:www-data /var/www/html/glpi
+
+Finalement on peut faire la configuration de GLPI en entrant l'adresse de GLPI :
+(adresse IP)/glpi
